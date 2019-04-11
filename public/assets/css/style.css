@@ -1,0 +1,30 @@
+.jumbotron {
+	background-image: url("../img/food.png");
+}
+
+body{
+	background-image: url("../img/body.png");
+}
+
+hr {
+	border-top: 1px solid #000;
+}
+
+.lead {
+	font-weight: 600 !important;
+}
+
+.panel-default>.panel-heading {
+	color: #fff;
+	background-color: #3b83f8;
+}
+
+.btn {
+	font-weight: bold;
+	height: 45px;
+}
+
+.form-control {
+	height: 45px;
+	margin: 0px 0px 10px 0px;
+}

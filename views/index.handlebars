@@ -1,0 +1,84 @@
+	<div class="jumbotron">
+		<div class="container">
+		<div class="row head">
+			<div class="col-xs-12">
+			  <h1 class="display-3 text-center" style="font-weight: 900; font-size: 3em;">CRUD App</h1>
+			  <hr class="my-4">
+			  <p class="lead">Simple application that performs CRUD operations to a mySQL database</p>
+			</div>
+		</div>
+		</div>
+	</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6 text-center" class="task">
+			<div class="panel panel-default">
+				<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Available Developers</div>
+				<div class="panel-body">
+					{{#each developer_data}}
+						{{#unless this.devoured}}
+							<div class="row">
+								<div class="col-xs-9 text-left" style="font-weight: bold;">
+									<pre style="font-size: 1.25em;"> {{this.id}}. {{this.developer_name}}, {{this.dev_type}}, {{this.dev_org}}, {{this.phone}}, {{this.address}}</pre>
+								</div>
+								<div class="col-xs-3 text-center">
+									<form method="POST" action="developer/{{id}}" class="button-size" style="line-height: 0px;">
+										<input type="hidden" name="developer_id" type="text" value={{this.id}}>
+										<br>
+										<button type="sumbit" class="btn btn-default btn-success">Devour!</button>
+									</form>
+								</div>
+							</div>
+						{{/unless}}
+					{{/each}}
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 text-center" class="task">
+			<div class="panel panel-default">
+				<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Devoured Developers</div>
+				<div class="panel-body">
+					{{#each developer_data}}
+						{{#if this.devoured}}
+							<input class="form-control" type="text" placeholder="{{this.id}}. {{this.developer_name}}, {{this.dev_type}}, {{this.dev_org}}, {{this.phone}}, {{this.address}}" readonly>
+						{{/if}}
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-6 text-center enter_section">
+			<div class="panel panel-default">
+				<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Add a Developer</div>
+				<div class="panel-body">
+					<form action="/add" method="POST">
+						<div class="input-group">
+							<input type="text" name="developer_name" class="form-control" value="" id="enter_text" placeholder="Enter Developer Name">
+							<input type="text" name="dev_type" class="form-control" value="" id="enter_text" placeholder="Enter Developer Type">
+							<input type="text" name="dev_org" class="form-control" value="" id="enter_text" placeholder="Enter Developer Organisation">
+							<input type="text" name="phone" class="form-control" value="" id="enter_text" placeholder="Enter Developer Phone No.">
+							<input type="text" name="address" class="form-control" value="" id="enter_text" placeholder="Enter Developer Address">
+							<br>
+							<br>
+							<span class="input-group-btn">
+								<button type="sumbit" class="btn btn-primary" id="text-enter-button">Add</button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 text-center enter_section">
+			<div class="panel panel-default">
+				<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Clear all Developers!</div>
+				<div class="panel-body">
+					<form action="/delete" method="POST">
+						<button type="sumbit" class="btn btn-danger" id="text-enter-button">Delete</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
